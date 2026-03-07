@@ -1,14 +1,51 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Union Citoyenne</title>
-</head>
-<body>
-    <main>
-        <h1>Union Citoyenne</h1>
-        <p>Accueillir dignement. Intégrer réellement. Devenir citoyen progressivement.</p>
-    </main>
-</body>
-</html>
+﻿{% extends 'base.html.twig' %}
+
+{% block title %}Union Citoyenne | Accueil{% endblock %}
+
+{% block body %}
+<section class="hero">
+    <p class="eyebrow">Mouvement civique humaniste et réformiste</p>
+    <h1>Union Citoyenne</h1>
+    <p class="slogan">La liberté de penser. La liberté de changer.</p>
+    <p>
+        Union Citoyenne est une plateforme et un mouvement de participation démocratique,
+        de réforme sociale et de responsabilité locale, au service d'une action publique
+        concrète, lisible et proche des citoyens.
+    </p>
+    <a class="button" href="{{ path('app_charte') }}">Lire la Charte</a>
+</section>
+
+<section>
+    <h2>Nos piliers</h2>
+    <div class="pillars-grid">
+        <article class="card">
+            <h3>Démocratie citoyenne directe locale</h3>
+            <p>Associer les habitants aux décisions locales par des mécanismes clairs, réguliers et responsables.</p>
+        </article>
+        <article class="card">
+            <h3>Coopérative alimentaire</h3>
+            <p>Sécuriser l'accès à une alimentation de qualité par des circuits coopératifs, transparents et accessibles.</p>
+        </article>
+        <article class="card">
+            <h3>Travail, dignité et transmission</h3>
+            <p>Valoriser le travail utile, reconnaître chaque parcours et transmettre les savoir-faire entre générations.</p>
+        </article>
+        <article class="card">
+            <h3>Emploi local</h3>
+            <p>Renforcer l'activité de proximité pour créer des emplois durables et stabiliser les territoires.</p>
+        </article>
+        <article class="card">
+            <h3>Programme social</h3>
+            <p>Garantir un socle social exigeant, centré sur l'autonomie, la justice et la solidarité concrète.</p>
+        </article>
+        <article class="card">
+            <h3>Immigration structurée et responsable</h3>
+            <p>Organiser l'accueil et l'intégration avec des règles cohérentes, des devoirs partagés et des droits effectifs.</p>
+        </article>
+        <article class="card">
+            <h3>Éducation, philosophie et esprit critique</h3>
+            <p>Développer la formation de l'esprit, la culture du débat et la capacité à juger librement.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}
