@@ -14,9 +14,10 @@ const projectRoot = path.resolve(__dirname, '..');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const appBaseUrl = process.env.APP_BASE_URL || `http://localhost:${port}`;
+const appBaseUrl = process.env.APP_BASE_URL || '';
 const appSecret = process.env.APP_SECRET || 'change-me';
 const mailerFrom = process.env.MAILER_FROM || 'no-reply@union-citoyenne.fr';
+const resetSupportersOnBoot = process.env.RESET_SUPPORTERS_ON_BOOT === 'true';
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) {
@@ -32,6 +33,7 @@ const resendApiKey = getResendApiKey();
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 const submitCooldownByIp = new Map();
 let supporterTableReady = false;
+let supporterResetDone = false;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -106,7 +108,8 @@ app.post('/adherer', async (req, res) => {
     }
 
     const token = createConfirmationToken({ id: supporterId, email: normalizedEmail });
-    await sendConfirmationEmail(normalizedEmail, token);
+    const confirmUrl = buildConfirmUrl(req, token);
+    await sendConfirmationEmail(normalizedEmail, confirmUrl);
 
     return res.redirect('/adherer/confirmation-envoyee');
   } catch (error) {
@@ -204,6 +207,13 @@ async function ensureSupporterTable() {
     )
   `);
   await pool.query('CREATE UNIQUE INDEX IF NOT EXISTS uniq_supporter_email_lower ON supporter (LOWER(email))');
+
+  if (resetSupportersOnBoot && !supporterResetDone) {
+    await pool.query('TRUNCATE TABLE supporter RESTART IDENTITY');
+    supporterResetDone = true;
+    console.log('Supporter table reset executed (RESET_SUPPORTERS_ON_BOOT=true).');
+  }
+
   supporterTableReady = true;
 }
 
@@ -270,11 +280,10 @@ function validateConfirmationToken(token) {
   return payload;
 }
 
-async function sendConfirmationEmail(to, token) {
+async function sendConfirmationEmail(to, confirmUrl) {
   if (!resend) {
     throw new Error('Resend API key is missing. Set RESEND_API_KEY or MAILER_DSN.');
   }
-  const confirmUrl = `${appBaseUrl.replace(/\/$/, '')}/adherer/confirmer/${token}`;
   await resend.emails.send({
     from: mailerFrom,
     to,
@@ -287,6 +296,19 @@ async function sendConfirmationEmail(to, token) {
       <p>Ce lien expire dans 24 heures.</p>
     `
   });
+}
+
+function buildConfirmUrl(req, token) {
+  const base = appBaseUrl || getRequestBaseUrl(req);
+  return `${base.replace(/\/$/, '')}/adherer/confirmer/${token}`;
+}
+
+function getRequestBaseUrl(req) {
+  const forwardedProto = req.headers['x-forwarded-proto'];
+  const forwardedHost = req.headers['x-forwarded-host'];
+  const host = (forwardedHost || req.headers.host || `localhost:${port}`).toString();
+  const proto = (forwardedProto || req.protocol || 'http').toString().split(',')[0].trim();
+  return `${proto}://${host}`;
 }
 
 function getResendApiKey() {

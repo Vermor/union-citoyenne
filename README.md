@@ -14,6 +14,8 @@ Site Node.js (Express + EJS + PostgreSQL + Resend).
 - `APP_SECRET`
 - `MAILER_FROM`
 - `RESEND_API_KEY` (ou `MAILER_DSN` au format `resend+api://KEY@default`)
+- `APP_BASE_URL` (optionnel, sinon domaine de la requête utilisé)
+- `RESET_SUPPORTERS_ON_BOOT` (`true` une fois pour reset la table, puis `false`)
 
 ## Routes
 
