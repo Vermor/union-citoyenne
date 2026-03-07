@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Throwable;
 
 final class SupporterController extends AbstractController
 {
@@ -33,7 +34,13 @@ final class SupporterController extends AbstractController
 
             $email = (string) $form->get('email')->getData();
             $acceptsFutureContact = (bool) $form->get('acceptsFutureContact')->getData();
-            $existing = $supporterRepository->findOneByEmailInsensitive($email);
+            try {
+                $existing = $supporterRepository->findOneByEmailInsensitive($email);
+            } catch (Throwable) {
+                $this->addFlash('error', 'Le service d’adhesion est temporairement indisponible.');
+
+                return $this->redirectToRoute('app_supporter_adhere');
+            }
 
             if ($existing instanceof Supporter) {
                 if ($existing->isConfirmed()) {
@@ -48,7 +55,13 @@ final class SupporterController extends AbstractController
                     ->setConfirmationSentAt(new \DateTimeImmutable())
                     ->setIpHash($this->hashIp($request->getClientIp()));
 
-                $entityManager->flush();
+                try {
+                    $entityManager->flush();
+                } catch (Throwable) {
+                    $this->addFlash('error', 'Le service d’adhesion est temporairement indisponible.');
+
+                    return $this->redirectToRoute('app_supporter_adhere');
+                }
                 try {
                     $emailVerifier->sendConfirmationEmail($existing);
                 } catch (TransportExceptionInterface) {
@@ -70,7 +83,13 @@ final class SupporterController extends AbstractController
                 ->setIpHash($this->hashIp($request->getClientIp()));
 
             $entityManager->persist($supporter);
-            $entityManager->flush();
+            try {
+                $entityManager->flush();
+            } catch (Throwable) {
+                $this->addFlash('error', 'Le service d’adhesion est temporairement indisponible.');
+
+                return $this->redirectToRoute('app_supporter_adhere');
+            }
 
             try {
                 $emailVerifier->sendConfirmationEmail($supporter);
@@ -85,7 +104,7 @@ final class SupporterController extends AbstractController
 
         return $this->render('supporter/adhere.html.twig', [
             'form' => $form,
-            'confirmedCount' => $supporterRepository->countConfirmed(),
+            'confirmedCount' => $this->safeConfirmedCount($supporterRepository),
         ]);
     }
 
@@ -93,7 +112,7 @@ final class SupporterController extends AbstractController
     public function confirmationSent(SupporterRepository $supporterRepository): Response
     {
         return $this->render('supporter/confirmation_sent.html.twig', [
-            'confirmedCount' => $supporterRepository->countConfirmed(),
+            'confirmedCount' => $this->safeConfirmedCount($supporterRepository),
         ]);
     }
 
@@ -112,7 +131,7 @@ final class SupporterController extends AbstractController
 
         if ($supporter->isConfirmed()) {
             return $this->render('supporter/confirmed.html.twig', [
-                'confirmedCount' => $supporterRepository->countConfirmed(),
+                'confirmedCount' => $this->safeConfirmedCount($supporterRepository),
                 'alreadyConfirmed' => true,
             ]);
         }
@@ -132,9 +151,18 @@ final class SupporterController extends AbstractController
         $entityManager->flush();
 
         return $this->render('supporter/confirmed.html.twig', [
-            'confirmedCount' => $supporterRepository->countConfirmed(),
+            'confirmedCount' => $this->safeConfirmedCount($supporterRepository),
             'alreadyConfirmed' => false,
         ]);
+    }
+
+    private function safeConfirmedCount(SupporterRepository $supporterRepository): int
+    {
+        try {
+            return $supporterRepository->countConfirmed();
+        } catch (Throwable) {
+            return 0;
+        }
     }
 
     private function isPotentialSpam(Request $request, string $honeypotValue): bool
