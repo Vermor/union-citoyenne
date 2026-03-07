@@ -16,11 +16,11 @@ body {
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     color: var(--text);
     background: var(--bg);
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .container {
-    width: min(920px, 92vw);
+    width: min(940px, 92vw);
     margin: 0 auto;
 }
 
@@ -63,7 +63,7 @@ body {
 }
 
 main.container {
-    padding: 2.5rem 0 3rem;
+    padding: 2.4rem 0 3rem;
 }
 
 h1,
@@ -74,12 +74,24 @@ h3 {
 }
 
 h1 {
-    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
 h2 {
-    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
-    margin-bottom: 1rem;
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    margin-bottom: 0.9rem;
+}
+
+h3 {
+    font-size: 1.05rem;
+}
+
+p {
+    margin: 0 0 0.9rem;
+}
+
+.section-block {
+    margin-bottom: 2rem;
 }
 
 .hero {
@@ -121,7 +133,7 @@ h2 {
 
 .pillars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 1rem;
 }
 
@@ -133,16 +145,45 @@ h2 {
 }
 
 .card h3 {
-    font-size: 1.05rem;
     margin-bottom: 0.5rem;
 }
 
-.charter section {
+.charter section,
+.charter header {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 1rem 1.2rem;
     margin-bottom: 1rem;
+}
+
+.charter ul {
+    margin: 0.5rem 0 0.7rem 1.2rem;
+    padding: 0;
+}
+
+.charter li {
+    margin-bottom: 0.4rem;
+}
+
+.quote-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem;
+    text-align: center;
+}
+
+.quote-block blockquote {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.quote-note {
+    color: var(--muted);
+    margin-top: 0.6rem;
 }
 
 .charter-closing {
