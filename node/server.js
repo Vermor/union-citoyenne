@@ -17,6 +17,8 @@ const port = process.env.PORT || 3000;
 const appBaseUrl = process.env.APP_BASE_URL || '';
 const appSecret = process.env.APP_SECRET || 'change-me';
 const mailerFrom = process.env.MAILER_FROM || 'no-reply@union-citoyenne.fr';
+const mailerFromName = process.env.MAILER_FROM_NAME || 'Union Citoyenne';
+const mailerReplyTo = process.env.MAILER_REPLY_TO || mailerFrom;
 const resetSupportersOnBoot = process.env.RESET_SUPPORTERS_ON_BOOT === 'true';
 
 const databaseUrl = process.env.DATABASE_URL;
@@ -284,30 +286,32 @@ async function sendConfirmationEmail(to, confirmUrl, acceptsFutureContact) {
   if (!resend) {
     throw new Error('Resend API key is missing. Set RESEND_API_KEY or MAILER_DSN.');
   }
+  const from = `${mailerFromName} <${mailerFrom}>`;
   const futureContactHtml = acceptsFutureContact
-    ? '<p>Vous avez indique vouloir etre tenu informe. Nous vous contacterons lorsqu il y aura du neuf sur le projet.</p>'
+    ? '<p>Vous avez indiqué vouloir être tenu informé. Nous vous contacterons lorsqu il y aura du neuf sur le projet.</p>'
     : '';
   const futureContactText = acceptsFutureContact
-    ? '\nVous avez indique vouloir etre tenu informe. Nous vous contacterons lorsqu il y aura du neuf sur le projet.\n'
+    ? '\nVous avez indiqué vouloir être tenu informé. Nous vous contacterons lorsqu il y aura du neuf sur le projet.\n'
     : '';
 
   await resend.emails.send({
-    from: mailerFrom,
+    from,
     to,
+    reply_to: mailerReplyTo,
     subject: 'Merci pour votre adhesion a Union Citoyenne',
     text:
-      `Merci pour votre adhesion a la charte d Union Citoyenne.\n\n` +
-      `Pour finaliser votre adhesion, confirmez votre adresse email ici:\n${confirmUrl}\n` +
+      `Merci pour votre adhésion à la charte d Union Citoyenne.\n\n` +
+      `Pour finaliser votre adhésion, confirmez votre adresse email ici :\n${confirmUrl}\n` +
       `${futureContactText}` +
-      `\nSi vous ne trouvez pas ce message, verifiez aussi votre dossier spam/indesirable.\n`,
+      `\nCet email vous est envoyé suite à votre demande d adhésion sur union-citoyenne.\n`,
     html: `
       <h1>Union Citoyenne</h1>
-      <p>Merci pour votre adhesion a la charte.</p>
-      <p>Pour finaliser votre adhesion, merci de confirmer votre adresse email en cliquant sur ce lien:</p>
-      <p><a href="${confirmUrl}">Confirmer mon adhesion</a></p>
+      <p>Merci pour votre adhésion à la charte.</p>
+      <p>Pour finaliser votre adhésion, merci de confirmer votre adresse email en cliquant sur ce lien :</p>
+      <p><a href="${confirmUrl}">Confirmer mon adhésion</a></p>
       <p>Ce lien expire dans 24 heures.</p>
       ${futureContactHtml}
-      <p style="color:#555;">Si vous ne trouvez pas ce message, verifiez aussi votre dossier spam/indesirable.</p>
+      <p style="color:#555;">Cet email vous est envoyé suite à votre demande d adhésion sur union-citoyenne.</p>
     `
   });
 }
