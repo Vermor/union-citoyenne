@@ -31,6 +31,7 @@ const pool = new Pool({
 const resendApiKey = getResendApiKey();
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 const submitCooldownByIp = new Map();
+let supporterTableReady = false;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -74,6 +75,8 @@ app.post('/adherer', async (req, res) => {
   }
 
   try {
+    await ensureSupporterTable();
+
     const existing = await findSupporterByEmail(normalizedEmail);
     if (existing && existing.is_confirmed) {
       return res.redirect('/adherer?type=info&message=Cette+adresse+email+a+deja+adhere+a+la+charte.');
@@ -107,6 +110,7 @@ app.post('/adherer', async (req, res) => {
 
     return res.redirect('/adherer/confirmation-envoyee');
   } catch (error) {
+    console.error('Adhesion submit error:', error);
     return res.redirect('/adherer?type=error&message=Le+service+d%27adhesion+est+temporairement+indisponible.');
   }
 });
@@ -121,6 +125,8 @@ app.get('/adherer/confirmer/:token', async (req, res) => {
   const confirmedCount = await safeCountConfirmed();
 
   try {
+    await ensureSupporterTable();
+
     const payload = validateConfirmationToken(token);
     const supporter = await pool.query('SELECT * FROM supporter WHERE id = $1', [payload.id]);
     if (!supporter.rows.length) {
@@ -146,8 +152,34 @@ app.get('/adherer/confirmer/:token', async (req, res) => {
     const newCount = await safeCountConfirmed();
     return res.render('confirmed', { confirmedCount: newCount, status: 'ok' });
   } catch (error) {
+    console.error('Confirmation error:', error);
     return res.render('confirmed', { confirmedCount, status: 'invalid' });
   }
+});
+
+app.get('/health', async (req, res) => {
+  const checks = {
+    db: false,
+    table: false,
+    mailerConfigured: Boolean(resendApiKey && mailerFrom)
+  };
+
+  try {
+    await pool.query('SELECT 1');
+    checks.db = true;
+  } catch (error) {
+    console.error('Health DB check error:', error);
+  }
+
+  try {
+    await ensureSupporterTable();
+    checks.table = true;
+  } catch (error) {
+    console.error('Health table check error:', error);
+  }
+
+  const ok = checks.db && checks.table;
+  return res.status(ok ? 200 : 500).json(checks);
 });
 
 app.listen(port, () => {
@@ -155,6 +187,9 @@ app.listen(port, () => {
 });
 
 async function ensureSupporterTable() {
+  if (supporterTableReady) {
+    return;
+  }
   await pool.query(`
     CREATE TABLE IF NOT EXISTS supporter (
       id SERIAL PRIMARY KEY,
@@ -169,13 +204,16 @@ async function ensureSupporterTable() {
     )
   `);
   await pool.query('CREATE UNIQUE INDEX IF NOT EXISTS uniq_supporter_email_lower ON supporter (LOWER(email))');
+  supporterTableReady = true;
 }
 
 async function safeCountConfirmed() {
   try {
+    await ensureSupporterTable();
     const result = await pool.query('SELECT COUNT(*)::int AS total FROM supporter WHERE is_confirmed = TRUE');
     return result.rows[0]?.total ?? 0;
-  } catch {
+  } catch (error) {
+    console.error('Count confirmed error:', error);
     return 0;
   }
 }
@@ -234,7 +272,7 @@ function validateConfirmationToken(token) {
 
 async function sendConfirmationEmail(to, token) {
   if (!resend) {
-    throw new Error('Resend API key is missing');
+    throw new Error('Resend API key is missing. Set RESEND_API_KEY or MAILER_DSN.');
   }
   const confirmUrl = `${appBaseUrl.replace(/\/$/, '')}/adherer/confirmer/${token}`;
   await resend.emails.send({
