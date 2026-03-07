@@ -109,7 +109,7 @@ app.post('/adherer', async (req, res) => {
 
     const token = createConfirmationToken({ id: supporterId, email: normalizedEmail });
     const confirmUrl = buildConfirmUrl(req, token);
-    await sendConfirmationEmail(normalizedEmail, confirmUrl);
+    await sendConfirmationEmail(normalizedEmail, confirmUrl, futureContactAccepted);
 
     return res.redirect('/adherer/confirmation-envoyee');
   } catch (error) {
@@ -280,20 +280,34 @@ function validateConfirmationToken(token) {
   return payload;
 }
 
-async function sendConfirmationEmail(to, confirmUrl) {
+async function sendConfirmationEmail(to, confirmUrl, acceptsFutureContact) {
   if (!resend) {
     throw new Error('Resend API key is missing. Set RESEND_API_KEY or MAILER_DSN.');
   }
+  const futureContactHtml = acceptsFutureContact
+    ? '<p>Vous avez indique vouloir etre tenu informe. Nous vous contacterons lorsqu il y aura du neuf sur le projet.</p>'
+    : '';
+  const futureContactText = acceptsFutureContact
+    ? '\nVous avez indique vouloir etre tenu informe. Nous vous contacterons lorsqu il y aura du neuf sur le projet.\n'
+    : '';
+
   await resend.emails.send({
     from: mailerFrom,
     to,
-    subject: 'Confirmez votre adhesion a la charte',
+    subject: 'Merci pour votre adhesion a Union Citoyenne',
+    text:
+      `Merci pour votre adhesion a la charte d Union Citoyenne.\n\n` +
+      `Pour finaliser votre adhesion, confirmez votre adresse email ici:\n${confirmUrl}\n` +
+      `${futureContactText}` +
+      `\nSi vous ne trouvez pas ce message, verifiez aussi votre dossier spam/indesirable.\n`,
     html: `
       <h1>Union Citoyenne</h1>
-      <p>Merci pour votre adhesion.</p>
-      <p>Confirmez votre email en cliquant ici :</p>
+      <p>Merci pour votre adhesion a la charte.</p>
+      <p>Pour finaliser votre adhesion, merci de confirmer votre adresse email en cliquant sur ce lien:</p>
       <p><a href="${confirmUrl}">Confirmer mon adhesion</a></p>
       <p>Ce lien expire dans 24 heures.</p>
+      ${futureContactHtml}
+      <p style="color:#555;">Si vous ne trouvez pas ce message, verifiez aussi votre dossier spam/indesirable.</p>
     `
   });
 }
