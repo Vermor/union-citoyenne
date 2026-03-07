@@ -9,6 +9,8 @@
         "php": ">=8.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*",
         "symfony/console": "8.0.*",
         "symfony/dotenv": "8.0.*",
         "symfony/flex": "^2",
