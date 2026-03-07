@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Union Citoyenne | Adhésion confirmée{% endblock %}
+
+{% block body %}
+<section class="section-block supporter-block">
+    {% if alreadyConfirmed %}
+        <h1>Adhésion déjà confirmée</h1>
+        <p>Cette adresse email est déjà confirmée comme adhérente à la charte.</p>
+    {% else %}
+        <h1>Adhésion confirmée</h1>
+        <p>Merci. Votre adhésion à la charte d’Union Citoyenne est maintenant confirmée.</p>
+    {% endif %}
+    <p><strong>Déjà {{ confirmedCount }} adhérents confirmés.</strong></p>
+    <p><a class="button" href="{{ path('app_home') }}">Retour à l’accueil</a></p>
+</section>
+{% endblock %}

@@ -16,7 +16,8 @@
         "symfony/runtime": "8.0.*",
         "symfony/twig-bundle": "*",
         "symfony/webapp-pack": "*",
-        "symfony/yaml": "8.0.*"
+        "symfony/yaml": "8.0.*",
+        "symfonycasts/verify-email-bundle": "*"
     },
     "config": {
         "allow-plugins": {
