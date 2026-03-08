@@ -1,0 +1,18 @@
+<%- include('partials/header', { title: 'Union Citoyenne | Adhésion confirmée' }) %>
+
+<section class="section-block supporter-block">
+  <% if (status === 'already') { %>
+    <h1>Adhésion déjà confirmée</h1>
+    <p>Cette adresse email est déjà confirmée comme adhérente à la charte.</p>
+  <% } else if (status === 'ok') { %>
+    <h1>Adhésion confirmée</h1>
+    <p>Merci. Votre adhésion à la charte d’Union Citoyenne est maintenant confirmée.</p>
+  <% } else { %>
+    <h1>Lien invalide</h1>
+    <p>Le lien de confirmation est invalide ou expiré.</p>
+  <% } %>
+  <p><strong>Déjà <%= confirmedCount %> adhérents confirmés.</strong></p>
+  <p><a class="button" href="/">Retour à l’accueil</a></p>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,47 @@
+<%- include('partials/header', { title: 'Union Citoyenne | Adhérer' }) %>
+
+<section class="section-block supporter-block">
+  <h1>Adhérer à la charte</h1>
+  <p>
+    Si vous adhérez aux grandes orientations de la charte d’Union Citoyenne,
+    vous pouvez laisser votre email ci-dessous.
+  </p>
+  <p><strong>Déjà <%= confirmedCount %> adhérents confirmés.</strong></p>
+  <p>Votre adhésion sera prise en compte après confirmation de votre adresse email.</p>
+  <p>Vous pouvez adhérer à la charte sans accepter d’être recontacté ensuite.</p>
+
+  <% if (message) { %>
+    <div class="flash flash-<%= messageType || 'info' %>"><%= message %></div>
+  <% } %>
+
+  <form class="supporter-form" action="/adherer" method="post">
+    <div class="form-row">
+      <label for="email">Adresse email</label>
+      <input id="email" name="email" type="email" required />
+    </div>
+
+    <div class="form-row checkbox-row">
+      <input id="agreesToCharter" name="agreesToCharter" type="checkbox" required />
+      <label for="agreesToCharter">J’adhère aux grandes orientations de la charte d’Union Citoyenne.</label>
+    </div>
+
+    <div class="form-row checkbox-row">
+      <input id="acceptsFutureContact" name="acceptsFutureContact" type="checkbox" />
+      <label for="acceptsFutureContact">J’accepte d’être recontacté ultérieurement au sujet du projet.</label>
+    </div>
+
+    <div class="hp-wrapper" aria-hidden="true">
+      <label for="website">Website</label>
+      <input id="website" class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <button class="button" type="submit">Adhérer à la charte</button>
+  </form>
+
+  <p class="privacy-note">
+    Votre email est utilisé pour confirmer votre adhésion. Le contact futur est optionnel.
+    Nous appliquons un principe de minimisation des données.
+  </p>
+</section>
+
+<%- include('partials/footer') %>

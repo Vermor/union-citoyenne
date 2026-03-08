@@ -1,0 +1,266 @@
+﻿:root {
+    --bg: #f7f7f4;
+    --surface: #ffffff;
+    --text: #1c1f24;
+    --muted: #5a636e;
+    --accent: #163a5b;
+    --border: #d9dfe6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+}
+
+.container {
+    width: min(940px, 92vw);
+    margin: 0 auto;
+}
+
+.site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.brand {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+    color: var(--accent);
+}
+
+main.container {
+    padding: 2.4rem 0 3rem;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.25;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+h2 {
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    margin-bottom: 0.9rem;
+}
+
+h3 {
+    font-size: 1.05rem;
+}
+
+p {
+    margin: 0 0 0.9rem;
+}
+
+.section-block {
+    margin-bottom: 2rem;
+}
+
+.hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.eyebrow {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0.3rem 0 1rem;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.button:hover,
+.button:focus {
+    background: #0f2f4a;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.charter section,
+.charter header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.charter ul {
+    margin: 0.5rem 0 0.7rem 1.2rem;
+    padding: 0;
+}
+
+.charter li {
+    margin-bottom: 0.4rem;
+}
+
+.quote-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem;
+    text-align: center;
+}
+
+.quote-block blockquote {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.quote-note {
+    color: var(--muted);
+    margin-top: 0.6rem;
+}
+
+.cta-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem;
+    margin-top: 1.5rem;
+}
+
+.charter-closing {
+    text-align: center;
+}
+
+.supporter-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem;
+}
+
+.supporter-form {
+    margin-top: 1rem;
+}
+
+.form-row {
+    margin-bottom: 0.9rem;
+}
+
+.form-row input[type="email"] {
+    width: 100%;
+    max-width: 460px;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+}
+
+.checkbox-row {
+    display: flex;
+    gap: 0.55rem;
+    align-items: flex-start;
+}
+
+.checkbox-row label {
+    margin-top: -0.1rem;
+}
+
+.privacy-note {
+    color: var(--muted);
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.flash {
+    border-radius: 8px;
+    padding: 0.65rem 0.8rem;
+    margin: 0.75rem 0;
+    border: 1px solid var(--border);
+}
+
+.flash-success {
+    background: #eef6ef;
+}
+
+.flash-info {
+    background: #eef3f8;
+}
+
+.flash-error {
+    background: #fdeeee;
+}
+
+.hp-wrapper {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
