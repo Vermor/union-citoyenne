@@ -126,6 +126,20 @@ p {
     margin: 0.3rem 0 1rem;
 }
 
+.hero-title-with-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.hero-title-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+}
+
 .button {
     display: inline-block;
     margin-top: 0.8rem;
