@@ -156,6 +156,17 @@ p {
     background: #0f2f4a;
 }
 
+.button-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.button-outline:hover,
+.button-outline:focus {
+    background: #e9eef3;
+}
+
 .pillars-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -186,8 +197,27 @@ p {
     border-radius: 6px;
 }
 
+.pillar-icon-lg {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.text-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.text-link:hover,
+.text-link:focus {
+    text-decoration: underline;
+}
+
 .charter section,
-.charter header {
+.charter header,
+.pillar-page section,
+.pillar-page header {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -195,12 +225,14 @@ p {
     margin-bottom: 1rem;
 }
 
-.charter ul {
+.charter ul,
+.pillar-page ul {
     margin: 0.5rem 0 0.7rem 1.2rem;
     padding: 0;
 }
 
-.charter li {
+.charter li,
+.pillar-page li {
     margin-bottom: 0.4rem;
 }
 
@@ -244,6 +276,49 @@ p {
 
 .charter-closing {
     text-align: center;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+    text-decoration: underline;
+}
+
+.pillar-intro {
+    font-size: 1.05rem;
+}
+
+.pillar-navigation h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.pillar-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+}
+
+.other-pillars-list {
+    columns: 2;
+    column-gap: 1.4rem;
+    list-style: disc;
+    margin: 0.4rem 0 0.8rem 1.2rem;
+    padding: 0;
 }
 
 .supporter-block {
@@ -311,4 +386,10 @@ p {
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .other-pillars-list {
+        columns: 1;
+    }
 }
