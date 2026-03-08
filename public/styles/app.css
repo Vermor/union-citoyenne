@@ -38,9 +38,20 @@ body {
 }
 
 .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     font-weight: 700;
     text-decoration: none;
     color: var(--text);
+}
+
+.brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
 }
 
 .nav-list {
