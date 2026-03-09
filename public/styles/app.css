@@ -38,9 +38,20 @@ body {
 }
 
 .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     font-weight: 700;
     text-decoration: none;
     color: var(--text);
+}
+
+.brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
 }
 
 .nav-list {
@@ -115,6 +126,20 @@ p {
     margin: 0.3rem 0 1rem;
 }
 
+.hero-title-with-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.hero-title-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+}
+
 .button {
     display: inline-block;
     margin-top: 0.8rem;
@@ -129,6 +154,17 @@ p {
 .button:hover,
 .button:focus {
     background: #0f2f4a;
+}
+
+.button-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.button-outline:hover,
+.button-outline:focus {
+    background: #e9eef3;
 }
 
 .pillars-grid {
@@ -148,8 +184,40 @@ p {
     margin-bottom: 0.5rem;
 }
 
+.pillar-title-with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.pillar-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.pillar-icon-lg {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.text-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.text-link:hover,
+.text-link:focus {
+    text-decoration: underline;
+}
+
 .charter section,
-.charter header {
+.charter header,
+.pillar-page section,
+.pillar-page header {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -157,12 +225,14 @@ p {
     margin-bottom: 1rem;
 }
 
-.charter ul {
+.charter ul,
+.pillar-page ul {
     margin: 0.5rem 0 0.7rem 1.2rem;
     padding: 0;
 }
 
-.charter li {
+.charter li,
+.pillar-page li {
     margin-bottom: 0.4rem;
 }
 
@@ -181,6 +251,16 @@ p {
     font-weight: 600;
 }
 
+.conclusion-logo {
+    width: 108px;
+    height: 108px;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    margin: 0 auto 1rem;
+    display: block;
+}
+
 .quote-note {
     color: var(--muted);
     margin-top: 0.6rem;
@@ -196,6 +276,49 @@ p {
 
 .charter-closing {
     text-align: center;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+    text-decoration: underline;
+}
+
+.pillar-intro {
+    font-size: 1.05rem;
+}
+
+.pillar-navigation h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.pillar-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+}
+
+.other-pillars-list {
+    columns: 2;
+    column-gap: 1.4rem;
+    list-style: disc;
+    margin: 0.4rem 0 0.8rem 1.2rem;
+    padding: 0;
 }
 
 .supporter-block {
@@ -263,4 +386,10 @@ p {
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .other-pillars-list {
+        columns: 1;
+    }
 }

@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { Pool } from 'pg';
 import { Resend } from 'resend';
+import { getPillarBySlug, pillars } from './data/pillars.js';
 
 dotenv.config();
 
@@ -46,12 +47,30 @@ await ensureSupporterTable();
 
 app.get('/', async (req, res) => {
   const confirmedCount = await safeCountConfirmed();
-  res.render('home', { confirmedCount });
+  res.render('home', { confirmedCount, pillars });
 });
 
 app.get('/charte', async (req, res) => {
   const confirmedCount = await safeCountConfirmed();
-  res.render('charter', { confirmedCount });
+  res.render('charter', { confirmedCount, pillars });
+});
+
+app.get('/piliers/:slug', async (req, res) => {
+  const pillar = getPillarBySlug(req.params.slug);
+  if (!pillar) {
+    return res.status(404).send('Pilier introuvable');
+  }
+
+  const index = pillars.findIndex((item) => item.slug === pillar.slug);
+  const previousPillar = index > 0 ? pillars[index - 1] : null;
+  const nextPillar = index < pillars.length - 1 ? pillars[index + 1] : null;
+
+  return res.render('pillar', {
+    pillar,
+    pillars,
+    previousPillar,
+    nextPillar
+  });
 });
 
 app.get('/adherer', async (req, res) => {
