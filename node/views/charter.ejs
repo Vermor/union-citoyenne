@@ -1,117 +1,137 @@
-<%- include('partials/header', { title: 'Union Citoyenne | La Charte' }) %>
+<%- include('partials/header', { title: 'Union Citoyenne | La Charte', bodyClass: 'page-charter' }) %>
 
-<article class="charter">
-  <header class="section-block">
+<section class="page-hero page-hero-compact">
+  <div class="page-hero-copy">
+    <p class="eyebrow">Document de reference</p>
     <h1>La Charte</h1>
+    <p class="hero-lead">
+      Une ligne politique centree sur la dignite humaine, la responsabilite individuelle
+      et la democratie locale.
+    </p>
+  </div>
+  <aside class="hero-panel hero-panel-compact">
+    <p class="panel-kicker">Point d'appui</p>
+    <h2><%= confirmedCount %> adherents confirmes</h2>
+    <p>La charte sert de socle commun pour les piliers, l'organisation et l'adhesion au projet.</p>
+    <a class="button button-outline" href="/adherer">Adherer</a>
+  </aside>
+</section>
+
+<article class="content-stack charter">
+  <header class="content-card content-card-emphasis">
+    <h2>Orientation generale</h2>
     <p>
-      Union Citoyenne est un mouvement humaniste réformiste qui dépasse l'opposition
-      gauche/droite. Notre ligne repose sur trois repères clairs: la dignité humaine,
-      la responsabilité individuelle et la démocratie locale. Nous défendons une réforme
-      concrète des institutions pour rapprocher les décisions de la vie réelle.
+      Union Citoyenne est un mouvement humaniste reformiste qui depasse l'opposition gauche/droite.
+      Notre ligne repose sur trois reperes clairs: la dignite humaine, la responsabilite individuelle
+      et la democratie locale.
+    </p>
+    <p>
+      Nous defendons une reforme concrete des institutions pour rapprocher les decisions
+      de la vie reelle et redonner du pouvoir d'action aux citoyens.
     </p>
   </header>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-democracy.jpg" alt="Icône démocratie locale" class="pillar-icon" /><span>Démocratie citoyenne directe locale</span></h2>
-    <p>La souveraineté populaire s'exerce de manière continue, du niveau communal au niveau national.</p>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-democracy.jpg" alt="Icone democratie locale" class="pillar-icon" /><span>Democratie citoyenne directe locale</span></h2>
+    <p>La souverainete populaire s'exerce de maniere continue, du niveau communal au niveau national.</p>
     <ul>
-      <li>Assemblée citoyenne hebdomadaire dans chaque commune.</li>
-      <li>Coordination régionale mensuelle pour harmoniser les priorités.</li>
-      <li>Référendum citoyen national pour les grands choix collectifs.</li>
+      <li>Assemblee citoyenne hebdomadaire dans chaque commune.</li>
+      <li>Coordination regionale mensuelle pour harmoniser les priorites.</li>
+      <li>Referendum citoyen national pour les grands choix collectifs.</li>
     </ul>
-    <p><a class="text-link" href="/piliers/democratie-citoyenne-locale">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/democratie-citoyenne-locale">Lire la page dediee</a></p>
   </section>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-food.jpg" alt="Icône alimentation coopérative" class="pillar-icon" /><span>Modèle coopératif citoyen alimentaire</span></h2>
-    <p>Nous voulons garantir la sécurité alimentaire tout en protégeant les producteurs et les territoires.</p>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-food.jpg" alt="Icone alimentation cooperative" class="pillar-icon" /><span>Modele cooperatif citoyen alimentaire</span></h2>
+    <p>Nous voulons garantir la securite alimentaire tout en protegeant les producteurs et les territoires.</p>
     <ul>
       <li>Circuit court prioritaire: producteurs vers citoyens.</li>
-      <li>Marchés locaux, coopératives citoyennes et plateformes locales de distribution.</li>
+      <li>Marches locaux, cooperatives citoyennes et plateformes locales de distribution.</li>
       <li>Exportation uniquement des surplus.</li>
       <li>Objectifs: revenu juste, alimentation saine, moins de transport, autonomie territoriale.</li>
     </ul>
-    <p><a class="text-link" href="/piliers/modele-cooperatif-citoyen-alimentaire">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/modele-cooperatif-citoyen-alimentaire">Lire la page dediee</a></p>
   </section>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-work.jpg" alt="Icône travail digne" class="pillar-icon" /><span>Travail, dignité et transmission</span></h2>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-work.jpg" alt="Icone travail digne" class="pillar-icon" /><span>Travail, dignite et transmission</span></h2>
     <p>
-      Le travail n'est pas un devoir moral imposé, mais une contribution libre à la société.
-      Il doit respecter la dignité, l'équilibre de vie et la santé physique et mentale.
+      Le travail n'est pas un devoir moral impose, mais une contribution libre a la societe.
+      Il doit respecter la dignite, l'equilibre de vie et la sante physique et mentale.
     </p>
     <ul>
-      <li>Reconnaissance des métiers utiles et des parcours de vie.</li>
-      <li>Réduction progressive du temps de travail après 55 ans selon les métiers.</li>
-      <li>Transmission intergénérationnelle via des seniors formateurs.</li>
+      <li>Reconnaissance des metiers utiles et des parcours de vie.</li>
+      <li>Reduction progressive du temps de travail apres 55 ans selon les metiers.</li>
+      <li>Transmission intergenerationnelle via des seniors formateurs.</li>
     </ul>
-    <p><a class="text-link" href="/piliers/travail-dignite-transmission">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/travail-dignite-transmission">Lire la page dediee</a></p>
   </section>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-local-employment.jpg" alt="Icône emploi local" class="pillar-icon" /><span>Emploi local prioritaire</span></h2>
-    <p>L'économie locale est un levier social, écologique et démocratique.</p>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-local-employment.jpg" alt="Icone emploi local" class="pillar-icon" /><span>Emploi local prioritaire</span></h2>
+    <p>L'economie locale est un levier social, ecologique et democratique.</p>
     <ul>
-      <li>Réduire les déplacements et la pollution.</li>
-      <li>Renforcer les économies régionales.</li>
-      <li>Améliorer la qualité de vie par une embauche locale encouragée.</li>
+      <li>Reduire les deplacements et la pollution.</li>
+      <li>Renforcer les economies regionales.</li>
+      <li>Ameliorer la qualite de vie par une embauche locale encouragee.</li>
     </ul>
-    <p><a class="text-link" href="/piliers/solidarite-sociale-territoires-cohesion-citoyenne">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/solidarite-sociale-territoires-cohesion-citoyenne">Lire la page dediee</a></p>
   </section>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-social.jpg" alt="Icône programme social" class="pillar-icon" /><span>Programme social</span></h2>
-    <p>Le programme social vise une sécurité de base solide et accessible, sur tout le territoire.</p>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-social.jpg" alt="Icone programme social" class="pillar-icon" /><span>Programme social</span></h2>
+    <p>Le programme social vise une securite de base solide et accessible, sur tout le territoire.</p>
     <ul>
-      <li>Accès universel aux soins et prévention prioritaire.</li>
-      <li>Santé mentale intégrée aux politiques publiques.</li>
-      <li>Logement digne, accès à l'alimentation et à l'éducation.</li>
+      <li>Acces universel aux soins et prevention prioritaire.</li>
+      <li>Sante mentale integree aux politiques publiques.</li>
+      <li>Logement digne, acces a l'alimentation et a l'education.</li>
     </ul>
-    <p><a class="text-link" href="/piliers/sante-bien-etre-dignite-humaine">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/sante-bien-etre-dignite-humaine">Lire la page dediee</a></p>
   </section>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-immigration.jpg" alt="Icône immigration structurée" class="pillar-icon" /><span>Immigration structurée et responsable</span></h2>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-immigration.jpg" alt="Icone immigration structuree" class="pillar-icon" /><span>Immigration structuree et responsable</span></h2>
     <p>
-      L'immigration est ouverte mais organisée localement, selon les capacités d'accueil
-      et les réalités économiques des territoires.
+      L'immigration est ouverte mais organisee localement, selon les capacites d'accueil
+      et les realites economiques des territoires.
     </p>
     <ul>
-      <li>Intégration progressive par la langue, l'emploi et la vie locale.</li>
-      <li>Accès progressif aux droits sociaux selon la trajectoire d'intégration.</li>
-      <li>Citoyenneté et naturalisation progressives et prudentes.</li>
+      <li>Integration progressive par la langue, l'emploi et la vie locale.</li>
+      <li>Acces progressif aux droits sociaux selon la trajectoire d'integration.</li>
+      <li>Citoyennete et naturalisation progressives et prudentes.</li>
     </ul>
-    <h3>Citoyenneté progressive</h3>
+    <h3>Citoyennete progressive</h3>
     <p>
-      La citoyenneté se construit par l'intégration réelle, la participation sociale
-      et territoriale, et l'implication dans la vie démocratique locale, notamment via
-      les assemblées citoyennes.
+      La citoyennete se construit par l'integration reelle, la participation sociale
+      et territoriale, et l'implication dans la vie democratique locale, notamment via
+      les assemblees citoyennes.
     </p>
-    <p><a class="text-link" href="/piliers/immigration-integration-responsable">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/immigration-integration-responsable">Lire la page dediee</a></p>
   </section>
 
-  <section>
-    <h2 class="pillar-title-with-icon"><img src="/images/pillar-education.jpg" alt="Icône éducation" class="pillar-icon" /><span>Philosophie, éducation et esprit critique</span></h2>
-    <p>Former des êtres humains capables de penser est une priorité institutionnelle.</p>
+  <section class="content-card">
+    <h2 class="pillar-title-with-icon"><img src="/images/pillar-education.jpg" alt="Icone education" class="pillar-icon" /><span>Philosophie, education et esprit critique</span></h2>
+    <p>Former des etres humains capables de penser est une priorite institutionnelle.</p>
     <ul>
-      <li>Philosophie dès l'adolescence et distinction entre opinion et raisonnement.</li>
-      <li>Analyse des médias, de la publicité, des réseaux sociaux et des discours politiques.</li>
-      <li>Reconnaissance des biais cognitifs et des mécanismes de manipulation.</li>
-      <li>Développement de l'intelligence intellectuelle, émotionnelle, créative et manuelle.</li>
-      <li>Lien avec la nature, l'agriculture, les métiers réels et la production alimentaire.</li>
-      <li>Participation aux débats, décisions locales et projets coopératifs.</li>
-      <li>Transmission intergénérationnelle, silence, concentration et réflexion lente.</li>
+      <li>Philosophie des l'adolescence et distinction entre opinion et raisonnement.</li>
+      <li>Analyse des medias, de la publicite, des reseaux sociaux et des discours politiques.</li>
+      <li>Reconnaissance des biais cognitifs et des mecanismes de manipulation.</li>
+      <li>Developpement de l'intelligence intellectuelle, emotionnelle, creative et manuelle.</li>
+      <li>Lien avec la nature, l'agriculture, les metiers reels et la production alimentaire.</li>
+      <li>Participation aux debats, decisions locales et projets cooperatifs.</li>
+      <li>Transmission intergenerationnelle, silence, concentration et reflexion lente.</li>
     </ul>
-    <p><a class="text-link" href="/piliers/education-esprits-libres">Lire la page dédiée</a></p>
+    <p><a class="text-link" href="/piliers/education-esprits-libres">Lire la page dediee</a></p>
   </section>
 
-  <section class="charter-closing">
+  <section class="content-card content-card-center">
     <img src="/images/logo.png" alt="Logo Union Citoyenne" class="conclusion-logo" />
     <h2>Conclusion</h2>
-    <p class="slogan">La liberté de penser. La liberté de changer.</p>
+    <p class="hero-lead">La liberte de penser. La liberte de changer.</p>
     <p>Le peuple par le peuple. Le peuple pour le peuple.</p>
-    <p>Déjà <%= confirmedCount %> adhérents confirmés.</p>
-    <p><a class="button" href="/adherer">Adhérer à la charte</a></p>
+    <p><strong>Deja <%= confirmedCount %> adherents confirmes.</strong></p>
+    <p><a class="button" href="/adherer">Adherer a la charte</a></p>
   </section>
 </article>
 

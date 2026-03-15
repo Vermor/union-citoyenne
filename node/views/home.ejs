@@ -1,108 +1,129 @@
-<%- include('partials/header', { title: 'Union Citoyenne | Accueil' }) %>
+<%- include('partials/header', { title: 'Union Citoyenne | Accueil', bodyClass: 'page-home' }) %>
 
-<section class="hero">
-  <p class="eyebrow">Mouvement humaniste réformiste</p>
-  <h1 class="hero-title-with-logo">
-    <img src="/images/logo.png" alt="Logo Union Citoyenne" class="hero-title-logo" />
-    <span>Union Citoyenne</span>
-  </h1>
-  <p class="slogan">La liberté de penser. La liberté de changer.</p>
-  <p>
-    Union Citoyenne est une plateforme civique qui veut dépasser le clivage gauche/droite
-    pour remettre au centre la dignité humaine, la responsabilité individuelle
-    et la démocratie locale. Notre objectif est simple: rendre l'action publique
-    plus proche, plus juste et plus efficace, avec des citoyens pleinement acteurs.
-  </p>
-  <a class="button" href="/charte">Découvrir la Charte</a>
+<section class="page-hero page-hero-home">
+  <div class="page-hero-copy">
+    <p class="eyebrow">Mouvement humaniste reformiste</p>
+    <h1>Union Citoyenne</h1>
+    <p class="hero-lead">
+      Union Citoyenne veut depasser le clivage gauche-droite pour remettre au centre la dignite
+      humaine, la responsabilite individuelle et la democratie locale.
+    </p>
+    <p>
+      Notre objectif est simple: rendre l'action publique plus proche, plus juste et plus efficace,
+      avec des citoyens pleinement acteurs dans les decisions qui touchent leur quotidien.
+    </p>
+    <div class="hero-actions">
+      <a class="button" href="/charte">Decouvrir la charte</a>
+      <a class="button button-outline" href="/adherer">Adherer</a>
+    </div>
+  </div>
+
+  <aside class="hero-panel">
+    <p class="panel-kicker">Cap politique</p>
+    <h2>Redonner du poids aux citoyens et aux territoires</h2>
+    <p>
+      Une methode civique, des assemblees locales, une coordination territoriale
+      et des piliers concrets pour transformer l'action publique.
+    </p>
+    <div class="metric-grid">
+      <article class="metric-card">
+        <strong><%= confirmedCount %></strong>
+        <span>adherents confirmes</span>
+      </article>
+      <article class="metric-card">
+        <strong>7</strong>
+        <span>piliers de reforme</span>
+      </article>
+      <article class="metric-card">
+        <strong>3</strong>
+        <span>reperes fondateurs</span>
+      </article>
+    </div>
+  </aside>
 </section>
 
-<section class="section-block">
-  <h2>Notre méthode</h2>
-  <div class="pillars-grid">
-    <article class="card">
+<section class="themed-section">
+  <div class="section-heading">
+    <p class="eyebrow">Notre methode</p>
+    <h2>Trois repères pour structurer le projet</h2>
+  </div>
+
+  <div class="feature-grid">
+    <article class="feature-card">
       <h3>Philosophie</h3>
-      <p>Former des citoyens capables de penser par eux-mêmes et de juger avec recul.</p>
+      <p>Former des citoyens capables de penser par eux-memes et de juger avec recul.</p>
     </article>
-    <article class="card">
-      <h3>Éthique</h3>
-      <p>Relier liberté et responsabilité, avec une exigence de dignité pour chacun.</p>
+    <article class="feature-card">
+      <h3>Ethique</h3>
+      <p>Relier liberte et responsabilite, avec une exigence de dignite pour chacun.</p>
     </article>
-    <article class="card">
+    <article class="feature-card">
       <h3>Institutions</h3>
-      <p>Organiser des mécanismes clairs pour que les décisions reviennent aux citoyens.</p>
+      <p>Organiser des mecanismes clairs pour que les decisions reviennent aux citoyens.</p>
     </article>
   </div>
 </section>
 
-<section class="section-block">
-  <h2>Comment cela fonctionnerait ?</h2>
-  <div class="pillars-grid">
-    <article class="card">
-      <h3>Assemblées locales</h3>
-      <p>Une assemblée citoyenne hebdomadaire dans chaque commune pour débattre et proposer.</p>
+<section class="themed-section">
+  <div class="section-heading">
+    <p class="eyebrow">Fonctionnement</p>
+    <h2>Une democratie qui remonte du terrain</h2>
+  </div>
+
+  <div class="timeline-grid">
+    <article class="timeline-card">
+      <span class="timeline-index">01</span>
+      <h3>Assemblees locales</h3>
+      <p>Une assemblee citoyenne hebdomadaire dans chaque commune pour debattre et proposer.</p>
     </article>
-    <article class="card">
-      <h3>Coordination régionale</h3>
-      <p>Une coordination mensuelle par région pour consolider les priorités du terrain.</p>
+    <article class="timeline-card">
+      <span class="timeline-index">02</span>
+      <h3>Coordination regionale</h3>
+      <p>Une coordination mensuelle par region pour consolider les priorites du terrain.</p>
     </article>
-    <article class="card">
-      <h3>Référendum national</h3>
-      <p>Un référendum citoyen national pour les grands sujets qui engagent l'ensemble du pays.</p>
+    <article class="timeline-card">
+      <span class="timeline-index">03</span>
+      <h3>Referendum national</h3>
+      <p>Un referendum citoyen national pour les grands sujets qui engagent l'ensemble du pays.</p>
     </article>
   </div>
 </section>
 
-<section class="section-block">
-  <h2>Nos piliers</h2>
-  <div class="pillars-grid">
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-democracy.jpg" alt="Icône démocratie locale" class="pillar-icon" /><span>Démocratie citoyenne directe locale</span></h3>
-      <p>Des décisions construites depuis la commune jusqu'au niveau national, avec un vrai pouvoir citoyen.</p>
-      <p><a class="text-link" href="/piliers/democratie-citoyenne-locale">Découvrir ce pilier</a></p>
-    </article>
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-food.jpg" alt="Icône alimentation coopérative" class="pillar-icon" /><span>Modèle coopératif citoyen alimentaire</span></h3>
-      <p>Circuits courts, marchés locaux et coopératives pour assurer revenu juste et alimentation saine.</p>
-      <p><a class="text-link" href="/piliers/modele-cooperatif-citoyen-alimentaire">Découvrir ce pilier</a></p>
-    </article>
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-work.jpg" alt="Icône travail digne" class="pillar-icon" /><span>Travail, dignité et transmission</span></h3>
-      <p>Un travail choisi, respectueux de la santé, avec transmission intergénérationnelle des savoir-faire.</p>
-      <p><a class="text-link" href="/piliers/travail-dignite-transmission">Découvrir ce pilier</a></p>
-    </article>
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-local-employment.jpg" alt="Icône emploi local" class="pillar-icon" /><span>Emploi local prioritaire</span></h3>
-      <p>Encourager l'embauche locale pour réduire les déplacements et renforcer les économies régionales.</p>
-      <p><a class="text-link" href="/piliers/solidarite-sociale-territoires-cohesion-citoyenne">Découvrir ce pilier</a></p>
-    </article>
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-social.jpg" alt="Icône programme social" class="pillar-icon" /><span>Programme social</span></h3>
-      <p>Accès universel aux soins, au logement digne, à l'alimentation et à l'éducation.</p>
-      <p><a class="text-link" href="/piliers/sante-bien-etre-dignite-humaine">Découvrir ce pilier</a></p>
-    </article>
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-immigration.jpg" alt="Icône immigration structurée" class="pillar-icon" /><span>Immigration structurée et responsable</span></h3>
-      <p>Accueil organisé selon les capacités locales, avec intégration réelle par la langue, l'emploi et la vie locale.</p>
-      <p><a class="text-link" href="/piliers/immigration-integration-responsable">Découvrir ce pilier</a></p>
-    </article>
-    <article class="card">
-      <h3 class="pillar-title-with-icon"><img src="/images/pillar-education.jpg" alt="Icône éducation" class="pillar-icon" /><span>Philosophie, éducation et esprit critique</span></h3>
-      <p>Former des citoyens capables d'analyser les discours, les médias et les mécanismes de manipulation.</p>
-      <p><a class="text-link" href="/piliers/education-esprits-libres">Découvrir ce pilier</a></p>
-    </article>
+<section class="themed-section">
+  <div class="section-heading">
+    <p class="eyebrow">Piliers</p>
+    <h2>Les axes du projet</h2>
+  </div>
+
+  <div class="pillar-grid">
+    <% pillars.forEach((pillar) => { %>
+      <article class="pillar-card">
+        <img class="pillar-card-image" src="<%= pillar.icon %>" alt="Illustration <%= pillar.title %>" />
+        <div class="pillar-card-body">
+          <h3><%= pillar.title %></h3>
+          <p><%= pillar.shortDescription %></p>
+          <a class="text-link" href="/piliers/<%= pillar.slug %>">Decouvrir ce pilier</a>
+        </div>
+      </article>
+    <% }) %>
   </div>
 </section>
 
-<section class="quote-block">
+<section class="quote-band">
   <img src="/images/logo.png" alt="Logo Union Citoyenne" class="conclusion-logo" />
-  <blockquote>« Le peuple par le peuple. Le peuple pour le peuple. »</blockquote>
-  <p class="quote-note">Liberté de penser, liberté de changer, responsabilité individuelle.</p>
+  <blockquote>Le peuple par le peuple. Le peuple pour le peuple.</blockquote>
+  <p class="quote-note">Liberte de penser, liberte de changer, responsabilite individuelle.</p>
 </section>
 
-<section class="cta-block">
-  <h2>Adhérer à la charte</h2>
-  <p>Déjà <%= confirmedCount %> adhérents confirmés.</p>
-  <a class="button" href="/adherer">Adhérer à la charte</a>
+<section class="cta-banner">
+  <div>
+    <p class="eyebrow">Adhesion</p>
+    <h2>Rejoindre la charte</h2>
+    <p>Le projet compte deja <strong><%= confirmedCount %> adherents confirmes</strong>.</p>
+  </div>
+  <div class="cta-actions">
+    <a class="button" href="/adherer">Adherer a la charte</a>
+  </div>
 </section>
 
 <%- include('partials/footer') %>

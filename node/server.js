@@ -42,6 +42,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(projectRoot, 'public')));
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
 
 await ensureSupporterTable();
 
