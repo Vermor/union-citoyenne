@@ -276,7 +276,7 @@ a {
 .page-hero-home::before {
     background:
         linear-gradient(110deg, rgba(255, 248, 237, 0.97) 0%, rgba(255, 248, 237, 0.92) 48%, rgba(255, 248, 237, 0.8) 100%),
-        url("/images/cover.jpg") center top/cover no-repeat;
+        url("/images/covernew.jpg") center top/cover no-repeat;
 }
 
 .page-hero-copy,
@@ -559,7 +559,7 @@ ul {
     text-align: center;
     background:
         linear-gradient(145deg, rgba(28, 20, 17, 0.96), rgba(47, 93, 52, 0.92)),
-        url("/images/cover.jpg") center/cover no-repeat;
+        url("/images/covernew.jpg") center/cover no-repeat;
     color: var(--cream);
 }
 
