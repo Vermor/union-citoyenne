@@ -466,6 +466,54 @@ ul {
     max-width: 700px;
 }
 
+.anthem-section {
+    background:
+        linear-gradient(135deg, rgba(255, 250, 242, 0.96), rgba(247, 241, 233, 0.9)),
+        var(--surface);
+}
+
+.anthem-heading {
+    max-width: none;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.anthem-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.anthem-copy {
+    color: var(--muted);
+}
+
+.anthem-copy p:last-child {
+    margin-bottom: 0;
+}
+
+.anthem-note {
+    font-size: 0.95rem;
+}
+
+.anthem-player-card {
+    padding: 16px;
+    border-radius: 28px;
+    background:
+        linear-gradient(160deg, rgba(28, 20, 17, 0.98), rgba(47, 93, 52, 0.9)),
+        rgba(28, 20, 17, 0.96);
+    border: 1px solid rgba(28, 20, 17, 0.08);
+    box-shadow: var(--shadow-soft);
+}
+
+.anthem-player {
+    display: block;
+    width: 100%;
+    border-radius: 18px;
+    background: #000;
+}
+
 .feature-grid,
 .timeline-grid,
 .pillar-grid,
@@ -826,6 +874,10 @@ ul {
         flex-wrap: wrap;
     }
 
+    .anthem-layout {
+        grid-template-columns: 1fr;
+    }
+
     .site-nav {
         order: 3;
         width: 100%;
@@ -869,6 +921,14 @@ ul {
 
     .metric-grid {
         grid-template-columns: 1fr;
+    }
+
+    .anthem-heading {
+        gap: 16px;
+    }
+
+    .anthem-heading .button {
+        width: 100%;
     }
 
     .other-pillars-list {

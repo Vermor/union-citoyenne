@@ -49,6 +49,42 @@
   </div>
 </section>
 
+<% if (officialSongAvailable) { %>
+  <section class="themed-section anthem-section">
+    <div class="section-heading anthem-heading">
+      <div>
+        <p class="eyebrow">Chanson officielle</p>
+        <h2>Ecouter l'hymne de l'Union Citoyenne</h2>
+      </div>
+      <a class="button button-outline" href="/media/chanson-officielle/telecharger">Telecharger le MP4</a>
+    </div>
+
+    <div class="anthem-layout">
+      <div class="anthem-copy">
+        <p>
+          La chanson officielle du mouvement est disponible directement depuis la page d'accueil.
+          Vous pouvez l'ecouter ici ou la telecharger pour la partager.
+        </p>
+        <p class="anthem-note">
+          Format MP4. Lecture integree dans le navigateur sur ordinateur et mobile si compatible.
+        </p>
+      </div>
+
+      <div class="anthem-player-card">
+        <video
+          class="anthem-player"
+          controls
+          preload="metadata"
+          poster="/images/covernew.jpg"
+        >
+          <source src="/media/chanson-officielle.mp4" type="video/mp4" />
+          Votre navigateur ne prend pas en charge la lecture video integree.
+        </video>
+      </div>
+    </div>
+  </section>
+<% } %>
+
 <section class="themed-section">
   <div class="section-heading">
     <p class="eyebrow">Notre méthode</p>

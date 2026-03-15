@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
@@ -12,6 +13,8 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
+const officialSongFilename = 'Union Citoyenne.mp4';
+const officialSongPath = path.join(projectRoot, officialSongFilename);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -51,7 +54,27 @@ await ensureSupporterTable();
 
 app.get('/', async (req, res) => {
   const confirmedCount = await safeCountConfirmed();
-  res.render('home', { confirmedCount, pillars });
+  res.render('home', {
+    confirmedCount,
+    pillars,
+    officialSongAvailable: fs.existsSync(officialSongPath)
+  });
+});
+
+app.get('/media/chanson-officielle.mp4', (req, res) => {
+  if (!fs.existsSync(officialSongPath)) {
+    return res.status(404).send('Fichier audio introuvable');
+  }
+
+  return res.sendFile(officialSongPath);
+});
+
+app.get('/media/chanson-officielle/telecharger', (req, res) => {
+  if (!fs.existsSync(officialSongPath)) {
+    return res.status(404).send('Fichier audio introuvable');
+  }
+
+  return res.download(officialSongPath, officialSongFilename);
 });
 
 app.get('/charte', async (req, res) => {
