@@ -1,17 +1,37 @@
-<%- include('partials/header', { title: 'Union Citoyenne | La Charte' }) %>
+<%- include('partials/header', { title: 'Union Citoyenne | La Charte', bodyClass: 'page-charter' }) %>
 
-<article class="charter">
-  <header class="section-block">
+<section class="page-hero page-hero-compact">
+  <div class="page-hero-copy">
+    <p class="eyebrow">Document de référence</p>
     <h1>La Charte</h1>
+    <p class="hero-lead">
+      Une ligne politique centrée sur la dignité humaine, la responsabilité individuelle
+      et la démocratie locale.
+    </p>
+  </div>
+  <aside class="hero-panel hero-panel-compact">
+    <p class="panel-kicker">Point d'appui</p>
+    <h2><%= confirmedCount %> adhérents confirmés</h2>
+    <p>La charte sert de socle commun pour les piliers, l'organisation et l'adhésion au projet.</p>
+    <a class="button button-outline" href="/adherer">Adhérer</a>
+  </aside>
+</section>
+
+<article class="content-stack charter">
+  <header class="content-card content-card-emphasis">
+    <h2>Orientation générale</h2>
     <p>
-      Union Citoyenne est un mouvement humaniste réformiste qui dépasse l'opposition
-      gauche/droite. Notre ligne repose sur trois repères clairs: la dignité humaine,
-      la responsabilité individuelle et la démocratie locale. Nous défendons une réforme
-      concrète des institutions pour rapprocher les décisions de la vie réelle.
+      Union Citoyenne est un mouvement humaniste réformiste qui dépasse l'opposition gauche/droite.
+      Notre ligne repose sur trois repères clairs: la dignité humaine, la responsabilité individuelle
+      et la démocratie locale.
+    </p>
+    <p>
+      Nous défendons une réforme concrète des institutions pour rapprocher les décisions
+      de la vie réelle et redonner du pouvoir d'action aux citoyens.
     </p>
   </header>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-democracy.jpg" alt="Icône démocratie locale" class="pillar-icon" /><span>Démocratie citoyenne directe locale</span></h2>
     <p>La souveraineté populaire s'exerce de manière continue, du niveau communal au niveau national.</p>
     <ul>
@@ -22,7 +42,7 @@
     <p><a class="text-link" href="/piliers/democratie-citoyenne-locale">Lire la page dédiée</a></p>
   </section>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-food.jpg" alt="Icône alimentation coopérative" class="pillar-icon" /><span>Modèle coopératif citoyen alimentaire</span></h2>
     <p>Nous voulons garantir la sécurité alimentaire tout en protégeant les producteurs et les territoires.</p>
     <ul>
@@ -34,7 +54,7 @@
     <p><a class="text-link" href="/piliers/modele-cooperatif-citoyen-alimentaire">Lire la page dédiée</a></p>
   </section>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-work.jpg" alt="Icône travail digne" class="pillar-icon" /><span>Travail, dignité et transmission</span></h2>
     <p>
       Le travail n'est pas un devoir moral imposé, mais une contribution libre à la société.
@@ -48,7 +68,7 @@
     <p><a class="text-link" href="/piliers/travail-dignite-transmission">Lire la page dédiée</a></p>
   </section>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-local-employment.jpg" alt="Icône emploi local" class="pillar-icon" /><span>Emploi local prioritaire</span></h2>
     <p>L'économie locale est un levier social, écologique et démocratique.</p>
     <ul>
@@ -59,7 +79,7 @@
     <p><a class="text-link" href="/piliers/solidarite-sociale-territoires-cohesion-citoyenne">Lire la page dédiée</a></p>
   </section>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-social.jpg" alt="Icône programme social" class="pillar-icon" /><span>Programme social</span></h2>
     <p>Le programme social vise une sécurité de base solide et accessible, sur tout le territoire.</p>
     <ul>
@@ -70,7 +90,7 @@
     <p><a class="text-link" href="/piliers/sante-bien-etre-dignite-humaine">Lire la page dédiée</a></p>
   </section>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-immigration.jpg" alt="Icône immigration structurée" class="pillar-icon" /><span>Immigration structurée et responsable</span></h2>
     <p>
       L'immigration est ouverte mais organisée localement, selon les capacités d'accueil
@@ -90,7 +110,7 @@
     <p><a class="text-link" href="/piliers/immigration-integration-responsable">Lire la page dédiée</a></p>
   </section>
 
-  <section>
+  <section class="content-card">
     <h2 class="pillar-title-with-icon"><img src="/images/pillar-education.jpg" alt="Icône éducation" class="pillar-icon" /><span>Philosophie, éducation et esprit critique</span></h2>
     <p>Former des êtres humains capables de penser est une priorité institutionnelle.</p>
     <ul>
@@ -105,12 +125,12 @@
     <p><a class="text-link" href="/piliers/education-esprits-libres">Lire la page dédiée</a></p>
   </section>
 
-  <section class="charter-closing">
+  <section class="content-card content-card-center">
     <img src="/images/logo.png" alt="Logo Union Citoyenne" class="conclusion-logo" />
     <h2>Conclusion</h2>
-    <p class="slogan">La liberté de penser. La liberté de changer.</p>
+    <p class="hero-lead">La liberté de penser. La liberté de changer.</p>
     <p>Le peuple par le peuple. Le peuple pour le peuple.</p>
-    <p>Déjà <%= confirmedCount %> adhérents confirmés.</p>
+    <p><strong>Déjà <%= confirmedCount %> adhérents confirmés.</strong></p>
     <p><a class="button" href="/adherer">Adhérer à la charte</a></p>
   </section>
 </article>

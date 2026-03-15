@@ -2,3 +2,6 @@ node_modules/
 .env.local
 .env.*.local
 npm-debug.log*
+template-education/
+POP_GRID_2025_3035.geojson
+sh_statbel_statistical_sectors_31370_20250101.geojson

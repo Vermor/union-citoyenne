@@ -1,18 +1,32 @@
-<%- include('partials/header', { title: 'Union Citoyenne | Adhésion confirmée' }) %>
+<%- include('partials/header', { title: 'Union Citoyenne | Adhésion confirmée', bodyClass: 'page-adhere' }) %>
 
-<section class="section-block supporter-block">
-  <% if (status === 'already') { %>
-    <h1>Adhésion déjà confirmée</h1>
-    <p>Cette adresse email est déjà confirmée comme adhérente à la charte.</p>
-  <% } else if (status === 'ok') { %>
-    <h1>Adhésion confirmée</h1>
-    <p>Merci. Votre adhésion à la charte d’Union Citoyenne est maintenant confirmée.</p>
-  <% } else { %>
-    <h1>Lien invalide</h1>
-    <p>Le lien de confirmation est invalide ou expiré.</p>
-  <% } %>
-  <p><strong>Déjà <%= confirmedCount %> adhérents confirmés.</strong></p>
-  <p><a class="button" href="/">Retour à l’accueil</a></p>
+<section class="page-hero page-hero-compact">
+  <div class="page-hero-copy">
+    <p class="eyebrow">Confirmation</p>
+    <% if (status === 'already') { %>
+      <h1>Adhésion déjà confirmée</h1>
+      <p class="hero-lead">Cette adresse email est déjà confirmée comme adhérente à la charte.</p>
+    <% } else if (status === 'ok') { %>
+      <h1>Adhésion confirmée</h1>
+      <p class="hero-lead">Merci. Votre adhésion à la charte d'Union Citoyenne est maintenant confirmée.</p>
+    <% } else { %>
+      <h1>Lien invalide</h1>
+      <p class="hero-lead">Le lien de confirmation est invalide ou expiré.</p>
+    <% } %>
+  </div>
+
+  <aside class="hero-panel hero-panel-compact">
+    <p class="panel-kicker">Participation</p>
+    <h2><%= confirmedCount %> adhérents confirmés</h2>
+    <a class="button button-outline" href="/">Retour à l'accueil</a>
+  </aside>
+</section>
+
+<section class="content-stack">
+  <article class="content-card supporter-block content-card-center">
+    <p><strong>Le soutien confirmé nourrit la dynamique du projet.</strong></p>
+    <p><a class="button" href="/charte">Lire la charte</a></p>
+  </article>
 </section>
 
 <%- include('partials/footer') %>

@@ -42,6 +42,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(projectRoot, 'public')));
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
 
 await ensureSupporterTable();
 
@@ -94,7 +98,7 @@ app.post('/adherer', async (req, res) => {
   const futureContactAccepted = acceptsFutureContact === 'on';
 
   if (!isValidEmail(normalizedEmail) || !charterAccepted) {
-    return res.redirect('/adherer?type=error&message=Merci+de+verifier+les+champs+du+formulaire.');
+    return res.redirect('/adherer?type=error&message=Merci+de+vérifier+les+champs+du+formulaire.');
   }
 
   try {
@@ -102,7 +106,7 @@ app.post('/adherer', async (req, res) => {
 
     const existing = await findSupporterByEmail(normalizedEmail);
     if (existing && existing.is_confirmed) {
-      return res.redirect('/adherer?type=info&message=Cette+adresse+email+a+deja+adhere+a+la+charte.');
+      return res.redirect('/adherer?type=info&message=Cette+adresse+email+a+déjà+adhéré+à+la+charte.');
     }
 
     let supporterId;
@@ -134,8 +138,8 @@ app.post('/adherer', async (req, res) => {
 
     return res.redirect('/adherer/confirmation-envoyee');
   } catch (error) {
-    console.error('Adhesion submit error:', error);
-    return res.redirect('/adherer?type=error&message=Le+service+d%27adhesion+est+temporairement+indisponible.');
+    console.error('Adhésion submit error:', error);
+    return res.redirect('/adherer?type=error&message=Le+service+d%27adhésion+est+temporairement+indisponible.');
   }
 });
 
@@ -317,7 +321,7 @@ async function sendConfirmationEmail(to, confirmUrl, acceptsFutureContact) {
     from,
     to,
     reply_to: mailerReplyTo,
-    subject: 'Merci pour votre adhesion a Union Citoyenne',
+    subject: 'Merci pour votre adhésion à Union Citoyenne',
     text:
       `Merci pour votre adhésion à la charte d Union Citoyenne.\n\n` +
       `Pour finaliser votre adhésion, confirmez votre adresse email ici :\n${confirmUrl}\n` +

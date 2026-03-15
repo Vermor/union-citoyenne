@@ -1,27 +1,39 @@
 <%- include('partials/header', {
   title: pillar.seoTitle,
-  description: pillar.seoDescription
+  description: pillar.seoDescription,
+  bodyClass: 'page-pillar'
 }) %>
 
-<nav class="breadcrumb" aria-label="Fil d'Ariane">
-  <a href="/">Accueil</a>
-  <span>/</span>
-  <a href="/charte">Charte</a>
-  <span>/</span>
-  <span aria-current="page"><%= pillar.title %></span>
-</nav>
-
-<article class="pillar-page">
-  <header class="section-block">
+<section class="page-hero page-hero-compact">
+  <div class="page-hero-copy">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="/">Accueil</a>
+      <span>/</span>
+      <a href="/charte">Charte</a>
+      <span>/</span>
+      <span aria-current="page"><%= pillar.title %></span>
+    </nav>
     <h1 class="pillar-title-with-icon">
       <img src="<%= pillar.icon %>" alt="Icône <%= pillar.title %>" class="pillar-icon pillar-icon-lg" />
       <span><%= pillar.title %></span>
     </h1>
-    <p class="pillar-intro"><%= pillar.intro %></p>
-  </header>
+    <p class="hero-lead"><%= pillar.intro %></p>
+  </div>
 
+  <aside class="hero-panel hero-panel-compact">
+    <p class="panel-kicker">Pilier</p>
+    <h2>Charte et mise en œuvre</h2>
+    <p>
+      Chaque pilier détaille une orientation du projet et la relie à une logique
+      institutionnelle, sociale et territoriale.
+    </p>
+    <a class="button button-outline" href="/charte">Retour à la charte</a>
+  </aside>
+</section>
+
+<article class="content-stack pillar-page">
   <% pillar.sections.forEach((section) => { %>
-    <section>
+    <section class="content-card">
       <h2><%= section.heading %></h2>
       <% section.paragraphs.forEach((paragraph) => { %>
         <p><%= paragraph %></p>
@@ -36,7 +48,7 @@
     </section>
   <% }) %>
 
-  <section class="pillar-navigation">
+  <section class="content-card pillar-navigation">
     <h2>Navigation</h2>
     <div class="pillar-nav-links">
       <a class="button button-outline" href="/charte">Retour à la charte</a>
@@ -44,10 +56,10 @@
     </div>
     <div class="pillar-nav-links">
       <% if (previousPillar) { %>
-        <a class="text-link" href="/piliers/<%= previousPillar.slug %>">← Pilier précédent</a>
+        <a class="text-link" href="/piliers/<%= previousPillar.slug %>">Pilier précédent</a>
       <% } %>
       <% if (nextPillar) { %>
-        <a class="text-link" href="/piliers/<%= nextPillar.slug %>">Pilier suivant →</a>
+        <a class="text-link" href="/piliers/<%= nextPillar.slug %>">Pilier suivant</a>
       <% } %>
     </div>
     <h3>Voir les autres piliers</h3>

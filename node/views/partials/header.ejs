@@ -7,23 +7,34 @@
   <% if (typeof description !== 'undefined' && description) { %>
   <meta name="description" content="<%= description %>" />
   <% } %>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="stylesheet" href="/styles/app.css" />
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">
-        <img class="brand-logo" src="/images/logo.png" alt="Logo Union Citoyenne" />
-        <span>Union Citoyenne</span>
-      </a>
-      <nav aria-label="Navigation principale">
-        <ul class="nav-list">
-          <li><a href="/">Accueil</a></li>
-          <li><a href="/charte">Charte</a></li>
-          <li><a href="/adherer">Adhérer</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main class="container">
+<body class="<%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="header-orb header-orb-left" aria-hidden="true"></div>
+      <div class="header-orb header-orb-right" aria-hidden="true"></div>
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <img class="brand-logo" src="/images/logo.png" alt="Logo Union Citoyenne" />
+          <span class="brand-copy">
+            <strong>Union Citoyenne</strong>
+            <small>Mouvement humaniste réformiste</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Navigation principale">
+          <a class="nav-link <%= currentPath === '/' ? 'is-active' : '' %>" href="/">Accueil</a>
+          <a class="nav-link <%= currentPath === '/charte' || currentPath.startsWith('/piliers/') ? 'is-active' : '' %>" href="/charte">Charte</a>
+          <a class="nav-link <%= currentPath.startsWith('/adherer') ? 'is-active' : '' %>" href="/adherer">Adhérer</a>
+        </nav>
+
+        <a class="header-cta" href="/adherer">Rejoindre</a>
+      </div>
+    </header>
+
+    <main class="page-main">
