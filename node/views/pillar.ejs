@@ -14,7 +14,7 @@
       <span aria-current="page"><%= pillar.title %></span>
     </nav>
     <h1 class="pillar-title-with-icon">
-      <img src="<%= pillar.icon %>" alt="Icone <%= pillar.title %>" class="pillar-icon pillar-icon-lg" />
+      <img src="<%= pillar.icon %>" alt="Icône <%= pillar.title %>" class="pillar-icon pillar-icon-lg" />
       <span><%= pillar.title %></span>
     </h1>
     <p class="hero-lead"><%= pillar.intro %></p>
@@ -22,12 +22,12 @@
 
   <aside class="hero-panel hero-panel-compact">
     <p class="panel-kicker">Pilier</p>
-    <h2>Charte et mise en oeuvre</h2>
+    <h2>Charte et mise en œuvre</h2>
     <p>
-      Chaque pilier detaille une orientation du projet et la relie a une logique
+      Chaque pilier détaille une orientation du projet et la relie à une logique
       institutionnelle, sociale et territoriale.
     </p>
-    <a class="button button-outline" href="/charte">Retour a la charte</a>
+    <a class="button button-outline" href="/charte">Retour à la charte</a>
   </aside>
 </section>
 
@@ -51,12 +51,12 @@
   <section class="content-card pillar-navigation">
     <h2>Navigation</h2>
     <div class="pillar-nav-links">
-      <a class="button button-outline" href="/charte">Retour a la charte</a>
-      <a class="button button-outline" href="/">Retour a l'accueil</a>
+      <a class="button button-outline" href="/charte">Retour à la charte</a>
+      <a class="button button-outline" href="/">Retour à l'accueil</a>
     </div>
     <div class="pillar-nav-links">
       <% if (previousPillar) { %>
-        <a class="text-link" href="/piliers/<%= previousPillar.slug %>">Pilier precedent</a>
+        <a class="text-link" href="/piliers/<%= previousPillar.slug %>">Pilier précédent</a>
       <% } %>
       <% if (nextPillar) { %>
         <a class="text-link" href="/piliers/<%= nextPillar.slug %>">Pilier suivant</a>

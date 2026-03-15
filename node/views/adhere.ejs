@@ -1,26 +1,26 @@
-<%- include('partials/header', { title: 'Union Citoyenne | Adherer', bodyClass: 'page-adhere' }) %>
+<%- include('partials/header', { title: 'Union Citoyenne | Adhérer', bodyClass: 'page-adhere' }) %>
 
 <section class="page-hero page-hero-compact">
   <div class="page-hero-copy">
     <p class="eyebrow">Engagement</p>
-    <h1>Adherer a la charte</h1>
+    <h1>Adhérer à la charte</h1>
     <p class="hero-lead">
       Si vous partagez les grandes orientations d'Union Citoyenne, vous pouvez
       laisser votre email ci-dessous.
     </p>
-    <p>Votre adhesion sera prise en compte apres confirmation de votre adresse email.</p>
+    <p>Votre adhésion sera prise en compte après confirmation de votre adresse email.</p>
   </div>
 
   <aside class="hero-panel hero-panel-compact">
     <p class="panel-kicker">Participation</p>
-    <h2><%= confirmedCount %> adherents confirmes</h2>
-    <p>Vous pouvez adherer a la charte sans accepter d'etre recontacte ensuite.</p>
+    <h2><%= confirmedCount %> adhérents confirmés</h2>
+    <p>Vous pouvez adhérer à la charte sans accepter d'être recontacté ensuite.</p>
   </aside>
 </section>
 
 <section class="form-layout">
   <article class="content-card supporter-block">
-    <h2>Formulaire d'adhesion</h2>
+    <h2>Formulaire d'adhésion</h2>
 
     <% if (message) { %>
       <div class="flash flash-<%= messageType || 'info' %>"><%= message %></div>
@@ -34,12 +34,12 @@
 
       <div class="form-row checkbox-row">
         <input id="agreesToCharter" name="agreesToCharter" type="checkbox" required />
-        <label for="agreesToCharter">J'adhere aux grandes orientations de la charte d'Union Citoyenne.</label>
+        <label for="agreesToCharter">J'adhère aux grandes orientations de la charte d'Union Citoyenne.</label>
       </div>
 
       <div class="form-row checkbox-row">
         <input id="acceptsFutureContact" name="acceptsFutureContact" type="checkbox" />
-        <label for="acceptsFutureContact">J'accepte d'etre recontacte ulterieurement au sujet du projet.</label>
+        <label for="acceptsFutureContact">J'accepte d'être recontacté ultérieurement au sujet du projet.</label>
       </div>
 
       <div class="hp-wrapper" aria-hidden="true">
@@ -47,19 +47,19 @@
         <input id="website" class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" />
       </div>
 
-      <button class="button" type="submit">Adherer a la charte</button>
+      <button class="button" type="submit">Adhérer à la charte</button>
     </form>
   </article>
 
   <aside class="content-card content-card-emphasis">
-    <h2>Ce que fait l'adhesion</h2>
+    <h2>Ce que fait l'adhésion</h2>
     <p>Elle confirme votre soutien aux grandes orientations de la charte.</p>
     <ul>
-      <li>Votre email sert d'abord a valider l'adhesion.</li>
+      <li>Votre email sert d'abord à valider l'adhésion.</li>
       <li>Le contact futur reste optionnel.</li>
-      <li>Le principe de minimisation des donnees est applique.</li>
+      <li>Le principe de minimisation des données est appliqué.</li>
     </ul>
-    <p class="privacy-note">Aucune information supplementaire n'est demandee a ce stade.</p>
+    <p class="privacy-note">Aucune information supplémentaire n'est demandée à ce stade.</p>
   </aside>
 </section>
 

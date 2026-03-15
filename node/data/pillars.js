@@ -33,7 +33,7 @@ export const pillars = [
       {
         heading: 'Du local vers le régional et le national',
         paragraphs: [
-          'Les priorités issues du terrain sont consolidées à l’échelle régionale, puis portées au niveau national pour les grands sujets communs.',
+          "Les priorités issues du terrain sont consolidées à l'échelle régionale, puis portées au niveau national pour les grands sujets communs.",
           "Ce mouvement du bas vers le haut reconnecte les décisions publiques à l'expérience vécue des citoyens."
         ]
       },
@@ -51,7 +51,7 @@ export const pillars = [
     title: 'Travail, dignité et transmission',
     icon: '/images/pillar-work.jpg',
     shortDescription:
-      "Le travail doit rester une activité humaine: utile à la société, respectueuse de la santé et ouverte à la transmission entre générations.",
+      'Le travail doit rester une activité humaine: utile à la société, respectueuse de la santé et ouverte à la transmission entre générations.',
     seoTitle: 'Travail, dignité et transmission | Union Citoyenne',
     seoDescription:
       "Le pilier travail d'Union Citoyenne: dignité des métiers, conditions humaines, adaptation des rythmes et transmission intergénérationnelle.",
@@ -62,19 +62,19 @@ export const pillars = [
         heading: "Le travail n'est pas un devoir moral imposé",
         paragraphs: [
           "Le travail est une nécessité pour faire vivre la société, mais il ne doit pas devenir une culpabilisation permanente des individus.",
-          "Exercé dans des conditions libres et dignes, il devient une contribution volontaire au bien commun."
+          'Exercé dans des conditions libres et dignes, il devient une contribution volontaire au bien commun.'
         ]
       },
       {
         heading: 'Restaurer la dignité du travail',
         paragraphs: [
-          "Chaque activité utile mérite reconnaissance: métiers manuels, techniques, agricoles, artisanaux et intellectuels.",
+          'Chaque activité utile mérite reconnaissance: métiers manuels, techniques, agricoles, artisanaux et intellectuels.',
           "Le cadre de travail doit respecter la santé physique et mentale, ainsi que l'équilibre de vie personnelle et familiale."
         ],
         bullets: [
           'Conditions de travail dignes',
           'Horaires soutenables',
-          'Respect de la personne dans l’organisation du travail'
+          "Respect de la personne dans l'organisation du travail"
         ]
       },
       {
@@ -128,12 +128,12 @@ export const pillars = [
         heading: 'Priorité aux circuits courts',
         paragraphs: [
           'Les circuits courts réduisent les intermédiaires et rapprochent producteurs et citoyens.',
-          'Ils contribuent à la qualité de l’alimentation, à la rémunération juste et à la réduction de l’empreinte écologique.'
+          "Ils contribuent à la qualité de l'alimentation, à la rémunération juste et à la réduction de l'empreinte écologique."
         ],
         bullets: [
           'Produits plus frais et traçables',
           'Moins de transport',
-          'Renforcement de l’économie locale'
+          "Renforcement de l'économie locale"
         ]
       },
       {
@@ -150,7 +150,7 @@ export const pillars = [
     title: 'Éducation et formation des esprits libres',
     icon: '/images/pillar-education.jpg',
     shortDescription:
-      'Une éducation qui apprend à penser, développe l’esprit critique et reconnaît toutes les formes d’intelligence.',
+      "Une éducation qui apprend à penser, développe l'esprit critique et reconnaît toutes les formes d'intelligence.",
     seoTitle: 'Éducation et formation des esprits libres | Union Citoyenne',
     seoDescription:
       "Le pilier éducation d'Union Citoyenne: esprit critique, philosophie, pluralité des intelligences et lien avec le réel.",
@@ -177,14 +177,14 @@ export const pillars = [
         ]
       },
       {
-        heading: 'Reconnaître toutes les formes d’intelligence',
+        heading: "Reconnaître toutes les formes d'intelligence",
         paragraphs: [
           "Le pilier refuse une vision uniquement académique de la réussite. Les compétences manuelles, techniques, artistiques et relationnelles sont essentielles.",
           "L'éducation doit aider chaque jeune à identifier ses talents et à les développer."
         ]
       },
       {
-        heading: 'Reconnecter l’école au monde réel',
+        heading: "Reconnecter l'école au monde réel",
         paragraphs: [
           "Les élèves doivent découvrir les métiers, l'agriculture, les services publics et l'économie concrète.",
           'Le temps de la concentration, du silence et de la réflexion lente est également nécessaire pour former des esprits libres.'
@@ -212,9 +212,9 @@ export const pillars = [
         ]
       },
       {
-        heading: 'Une organisation locale de l’accueil',
+        heading: "Une organisation locale de l'accueil",
         paragraphs: [
-          'Les capacités de logement, d’emploi et de services publics diffèrent selon les territoires.',
+          "Les capacités de logement, d'emploi et de services publics diffèrent selon les territoires.",
           "Les communes et les régions doivent donc participer à la planification de l'accueil et de l'accompagnement."
         ]
       },
@@ -255,7 +255,7 @@ export const pillars = [
         heading: 'Garantir un accès réel aux soins',
         paragraphs: [
           "Chaque citoyen doit pouvoir accéder à des soins adaptés, indépendamment de sa situation sociale ou économique.",
-          "La proximité territoriale des services de santé est essentielle, y compris dans les zones rurales."
+          'La proximité territoriale des services de santé est essentielle, y compris dans les zones rurales.'
         ]
       },
       {
@@ -268,7 +268,7 @@ export const pillars = [
       {
         heading: 'Faire de la santé mentale un enjeu central',
         paragraphs: [
-          "La souffrance psychique, l'isolement et les pressions sociales fragilisent durablement la cohésion collective.",
+          'La souffrance psychique, l’isolement et les pressions sociales fragilisent durablement la cohésion collective.',
           'Les dispositifs de soutien psychologique et psychiatrique doivent être accessibles, lisibles et renforcés.'
         ]
       },
@@ -276,7 +276,7 @@ export const pillars = [
         heading: 'Une approche globale et humaine du soin',
         paragraphs: [
           "La santé dépend aussi de l'environnement: qualité de l'air, de l'eau, de l'alimentation et des conditions de vie.",
-          "Le système de santé doit préserver la relation humaine soignant-patient et protéger les conditions de travail des professionnels."
+          'Le système de santé doit préserver la relation humaine soignant-patient et protéger les conditions de travail des professionnels.'
         ]
       }
     ]
