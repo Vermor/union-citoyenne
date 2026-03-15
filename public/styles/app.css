@@ -349,6 +349,71 @@ ul {
     margin-top: 26px;
 }
 
+.hero-anthem {
+    width: min(100%, 440px);
+    margin-top: 30px;
+    padding: 16px;
+    border-radius: 24px;
+    background: rgba(255, 250, 242, 0.78);
+    border: 1px solid rgba(28, 20, 17, 0.1);
+    box-shadow: 0 16px 36px rgba(28, 20, 17, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.hero-anthem-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.hero-anthem-head .eyebrow {
+    margin-bottom: 6px;
+}
+
+.hero-anthem-title {
+    margin-bottom: 0;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+}
+
+.hero-anthem-download {
+    flex-shrink: 0;
+}
+
+.hero-anthem-media {
+    display: grid;
+    gap: 12px;
+}
+
+.hero-anthem-media-audio {
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-items: center;
+}
+
+.hero-anthem-cover {
+    width: 88px;
+    height: 88px;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 12px 24px rgba(28, 20, 17, 0.18);
+}
+
+.hero-anthem-audio {
+    display: block;
+    width: 100%;
+}
+
+.hero-anthem-player {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    background: #000;
+    box-shadow: 0 12px 28px rgba(28, 20, 17, 0.2);
+}
+
 .hero-panel {
     align-self: stretch;
     display: flex;
@@ -464,54 +529,6 @@ ul {
     gap: 6px;
     margin-bottom: 26px;
     max-width: 700px;
-}
-
-.anthem-section {
-    background:
-        linear-gradient(135deg, rgba(255, 250, 242, 0.96), rgba(247, 241, 233, 0.9)),
-        var(--surface);
-}
-
-.anthem-heading {
-    max-width: none;
-    align-items: start;
-    justify-content: space-between;
-}
-
-.anthem-layout {
-    display: grid;
-    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-    gap: 24px;
-    align-items: center;
-}
-
-.anthem-copy {
-    color: var(--muted);
-}
-
-.anthem-copy p:last-child {
-    margin-bottom: 0;
-}
-
-.anthem-note {
-    font-size: 0.95rem;
-}
-
-.anthem-player-card {
-    padding: 16px;
-    border-radius: 28px;
-    background:
-        linear-gradient(160deg, rgba(28, 20, 17, 0.98), rgba(47, 93, 52, 0.9)),
-        rgba(28, 20, 17, 0.96);
-    border: 1px solid rgba(28, 20, 17, 0.08);
-    box-shadow: var(--shadow-soft);
-}
-
-.anthem-player {
-    display: block;
-    width: 100%;
-    border-radius: 18px;
-    background: #000;
 }
 
 .feature-grid,
@@ -874,10 +891,6 @@ ul {
         flex-wrap: wrap;
     }
 
-    .anthem-layout {
-        grid-template-columns: 1fr;
-    }
-
     .site-nav {
         order: 3;
         width: 100%;
@@ -894,6 +907,25 @@ ul {
 
     .container {
         width: min(100vw - 20px, 1180px);
+    }
+
+    .header-inner {
+        gap: 12px;
+        padding: 12px 0 10px;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+    }
+
+    .brand-copy strong {
+        font-size: 0.98rem;
     }
 
     .page-hero,
@@ -923,12 +955,22 @@ ul {
         grid-template-columns: 1fr;
     }
 
-    .anthem-heading {
-        gap: 16px;
+    .hero-anthem {
+        width: 100%;
     }
 
-    .anthem-heading .button {
-        width: 100%;
+    .hero-anthem-head {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .hero-anthem-media-audio {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-anthem-cover {
+        width: 72px;
+        height: 72px;
     }
 
     .other-pillars-list {
@@ -948,15 +990,29 @@ ul {
     }
 
     .site-nav {
-        justify-content: stretch;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 4px;
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .site-nav::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-link {
-        flex: 1 1 calc(50% - 8px);
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        font-size: 0.88rem;
         text-align: center;
+        white-space: nowrap;
     }
 
     .header-cta {
-        width: 100%;
+        display: none;
     }
 }

@@ -13,8 +13,10 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
-const officialSongFilename = 'Union Citoyenne.mp4';
-const officialSongPath = path.join(projectRoot, officialSongFilename);
+const officialSongAudioFilename = 'Official - Union Citoyenne.mp3';
+const officialSongAudioPath = path.join(projectRoot, officialSongAudioFilename);
+const officialSongVideoFilename = 'Union Citoyenne.mp4';
+const officialSongVideoPath = path.join(projectRoot, officialSongVideoFilename);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -54,27 +56,33 @@ await ensureSupporterTable();
 
 app.get('/', async (req, res) => {
   const confirmedCount = await safeCountConfirmed();
+  const officialSong = getOfficialSongAsset();
   res.render('home', {
     confirmedCount,
     pillars,
-    officialSongAvailable: fs.existsSync(officialSongPath)
+    officialSongAvailable: Boolean(officialSong),
+    officialSongKind: officialSong?.kind ?? '',
+    officialSongMimeType: officialSong?.mimeType ?? ''
   });
 });
 
-app.get('/media/chanson-officielle.mp4', (req, res) => {
-  if (!fs.existsSync(officialSongPath)) {
+app.get('/media/chanson-officielle', (req, res) => {
+  const officialSong = getOfficialSongAsset();
+  if (!officialSong) {
     return res.status(404).send('Fichier audio introuvable');
   }
 
-  return res.sendFile(officialSongPath);
+  res.type(officialSong.mimeType);
+  return res.sendFile(officialSong.path);
 });
 
 app.get('/media/chanson-officielle/telecharger', (req, res) => {
-  if (!fs.existsSync(officialSongPath)) {
+  const officialSong = getOfficialSongAsset();
+  if (!officialSong) {
     return res.status(404).send('Fichier audio introuvable');
   }
 
-  return res.download(officialSongPath, officialSongFilename);
+  return res.download(officialSong.path, officialSong.filename);
 });
 
 app.get('/charte', async (req, res) => {
@@ -382,4 +390,26 @@ function getResendApiKey() {
   const dsn = process.env.MAILER_DSN || '';
   const match = dsn.match(/^resend\+api:\/\/([^@]+)@/);
   return match ? decodeURIComponent(match[1]) : '';
+}
+
+function getOfficialSongAsset() {
+  if (fs.existsSync(officialSongAudioPath)) {
+    return {
+      path: officialSongAudioPath,
+      filename: officialSongAudioFilename,
+      kind: 'audio',
+      mimeType: 'audio/mpeg'
+    };
+  }
+
+  if (fs.existsSync(officialSongVideoPath)) {
+    return {
+      path: officialSongVideoPath,
+      filename: officialSongVideoFilename,
+      kind: 'video',
+      mimeType: 'video/mp4'
+    };
+  }
+
+  return null;
 }
